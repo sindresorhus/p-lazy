@@ -43,6 +43,7 @@ Create a `PLazy` promise from a promise-returning or async function.
 
 ## Related
 
+- [p-cancelable](https://github.com/sindresorhus/p-cancelable) - Create a promise that can be canceled
 - [p-defer](https://github.com/sindresorhus/p-defer) - Create a deferred promise
 - [More…](https://github.com/sindresorhus/promise-fun)
 
