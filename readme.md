@@ -45,6 +45,8 @@ Create a `PLazy` promise from a promise-returning or async function.
 
 - [p-cancelable](https://github.com/sindresorhus/p-cancelable) - Create a promise that can be canceled
 - [p-defer](https://github.com/sindresorhus/p-defer) - Create a deferred promise
+- [lazy-value](https://github.com/sindresorhus/lazy-value) - Create a lazily evaluated value
+- [define-lazy-prop](https://github.com/sindresorhus/define-lazy-prop) - Define a lazily evaluated property on an object
 - [More…](https://github.com/sindresorhus/promise-fun)
 
 
