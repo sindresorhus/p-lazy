@@ -1,13 +1,13 @@
 import test from 'ava';
 import delay from 'delay';
-import PLazy from './';
+import PLazy from '.';
 
 const fixture = Symbol('fixture');
 
 test('executor resolves', async t => {
 	const steps = [];
 
-	const p = new PLazy(resolve => {
+	const lazyPromise = new PLazy(resolve => {
 		steps.push('executor called');
 		resolve(fixture);
 	});
@@ -18,8 +18,8 @@ test('executor resolves', async t => {
 
 	steps.push('then called');
 
-	await p.then(val => {
-		t.is(val, fixture);
+	await lazyPromise.then(value => {
+		t.is(value, fixture);
 		steps.push('then-handler called');
 	});
 
@@ -32,12 +32,12 @@ test('executor resolves', async t => {
 });
 
 test('executor rejects', async t => {
-	const fixtureErr = new Error('fixture');
+	const fixtureError = new Error('fixture');
 	const steps = [];
 
-	const p = new PLazy((resolve, reject) => {
+	const lazyPromise = new PLazy((resolve, reject) => {
 		steps.push('executor called');
-		reject(fixtureErr);
+		reject(fixtureError);
 	});
 
 	steps.push('promise created');
@@ -46,8 +46,8 @@ test('executor rejects', async t => {
 
 	steps.push('catch called');
 
-	await p.catch(err => {
-		t.is(err, fixtureErr);
+	await lazyPromise.catch(error => {
+		t.is(error, fixtureError);
 		steps.push('catch-handler called');
 	});
 
@@ -60,18 +60,20 @@ test('executor rejects', async t => {
 });
 
 test('executor is never called if no `then`', async t => {
+	t.plan(1);
 	new PLazy(resolve => { // eslint-disable-line no-new
 		t.fail('executor should not be called');
 		resolve();
 	});
 
 	await delay(50);
+	t.pass();
 });
 
 test('executor is called with only catch handler', async t => {
 	const steps = [];
 
-	const p = new PLazy(resolve => {
+	const lazyPromise = new PLazy(resolve => {
 		steps.push('executor called');
 		resolve();
 	});
@@ -82,7 +84,7 @@ test('executor is called with only catch handler', async t => {
 
 	steps.push('catch called');
 
-	await p.catch(() => {});
+	await lazyPromise.catch(() => {});
 
 	t.deepEqual(steps, [
 		'promise created',
@@ -94,16 +96,15 @@ test('executor is called with only catch handler', async t => {
 test('convert promise-returning function to lazy promise', async t => {
 	let called = false;
 
-	const p = PLazy.from(async () => {
+	const lazyPromise = PLazy.from(async () => {
 		called = true;
 		return fixture;
 	});
 
-	t.true(p instanceof PLazy);
-	// TODO: remove `global.` when AVA targets Node.js 4
-	t.true(p instanceof global.Promise);
+	t.true(lazyPromise instanceof PLazy);
+	t.true(lazyPromise instanceof Promise);
 	t.false(called);
 
-	t.is(await p, fixture);
+	t.is(await lazyPromise, fixture);
 	t.true(called);
 });

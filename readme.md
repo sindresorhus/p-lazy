@@ -23,10 +23,11 @@ const lazyPromise = new PLazy(resolve => {
 
 // `someHeavyOperation` is not yet called
 
-doSomethingFun.then(() => {
+(async () => {
+	await doSomethingFun;
 	// `someHeavyOperation` is called
-	lazyPromise.then(console.log);
-});
+	console.log(await lazyPromise);
+})();
 ```
 
 
