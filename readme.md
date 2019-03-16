@@ -1,6 +1,6 @@
 # p-lazy [![Build Status](https://travis-ci.org/sindresorhus/p-lazy.svg?branch=master)](https://travis-ci.org/sindresorhus/p-lazy)
 
-> Create a lazy promise that defers execution until `.then()` or `.catch()` is called
+> Create a lazy promise that defers execution until it's awaited or when `.then()` or `.catch()` is called
 
 Useful if you're doing some heavy operations and would like to only do it when the promise is actually used.
 
@@ -8,7 +8,7 @@ Useful if you're doing some heavy operations and would like to only do it when t
 ## Install
 
 ```
-$ npm install --save p-lazy
+$ npm install p-lazy
 ```
 
 
