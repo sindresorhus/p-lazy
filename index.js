@@ -28,4 +28,3 @@ class PLazy extends Promise {
 }
 
 module.exports = PLazy;
-module.exports.default = PLazy;
