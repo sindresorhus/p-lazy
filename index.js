@@ -7,7 +7,6 @@ class PLazy extends Promise {
 		});
 
 		this._executor = executor;
-		this._promise = null;
 	}
 
 	static from(fn) {
@@ -18,6 +17,7 @@ class PLazy extends Promise {
 
 	then(onFulfilled, onRejected) {
 		this._promise = this._promise || new Promise(this._executor);
+		// eslint-disable-next-line promise/prefer-await-to-then
 		return this._promise.then(onFulfilled, onRejected);
 	}
 
