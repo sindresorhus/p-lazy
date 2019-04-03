@@ -1,5 +1,5 @@
-import {expectType} from 'tsd-check';
-import PLazy from '.';
+import {expectType} from 'tsd';
+import PLazy = require('.');
 
 const lazyPromise = new PLazy<string>((resolve, reject) => {
 	if (!true) {
