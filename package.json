@@ -1,6 +1,6 @@
 {
 	"name": "p-lazy",
-	"version": "2.0.0",
+	"version": "3.0.0",
 	"description": "Create a lazy promise that defers execution until it's awaited or when `.then()` or `.catch()` is called",
 	"license": "MIT",
 	"repository": "sindresorhus/p-lazy",
