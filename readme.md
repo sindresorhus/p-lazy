@@ -41,6 +41,14 @@ Same as the [`Promise` constructor](https://developer.mozilla.org/en/docs/Web/Ja
 
 Create a `PLazy` promise from a promise-returning or async function.
 
+### PLazy.resolve(value)
+
+Create a `PLazy` promise that is resolved with the given `value`, or the promise passed as `value`.
+
+### PLazy.reject(reason)
+
+Create a `PLazy` promise that is rejected with the given `reason`.
+
 
 ## Related
 
