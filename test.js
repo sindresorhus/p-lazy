@@ -109,7 +109,7 @@ test('convert promise-returning function to lazy promise', async t => {
 	t.true(called);
 });
 
-test('should have static method `reject` the returns a lazy rejected promise', async t => {
+test('should have static method `reject` that returns a lazy rejected promise', async t => {
 	const fixtureError = new Error('fixture');
 	const steps = [];
 
@@ -133,7 +133,7 @@ test('should have static method `reject` the returns a lazy rejected promise', a
 	]);
 });
 
-test('should have static method `resolve` the returns a lazy resolved promise', async t => {
+test('should have static method `resolve` that returns a lazy resolved promise', async t => {
 	const lazyPromise = PLazy.resolve(fixture);
 
 	t.true(lazyPromise instanceof PLazy);
