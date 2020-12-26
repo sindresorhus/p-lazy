@@ -15,15 +15,15 @@ class PLazy extends Promise {
 		});
 	}
 
-	static resolve(val) {
+	static resolve(value) {
 		return new PLazy(resolve => {
-			resolve(val);
+			resolve(value);
 		});
 	}
 
-	static reject(err) {
+	static reject(error) {
 		return new PLazy((resolve, reject) => {
-			reject(err);
+			reject(error);
 		});
 	}
 
