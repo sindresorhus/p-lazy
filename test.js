@@ -108,3 +108,36 @@ test('convert promise-returning function to lazy promise', async t => {
 	t.is(await lazyPromise, fixture);
 	t.true(called);
 });
+
+test('should have static method `reject` the returns a lazy rejected promise', async t => {
+	const fixtureError = new Error('fixture');
+	const steps = [];
+
+	const lazyPromise = PLazy.reject(fixtureError);
+
+	steps.push('promise created');
+
+	await delay(50);
+
+	steps.push('catch called');
+
+	await lazyPromise.catch(error => {
+		t.is(error, fixtureError);
+		steps.push('catch-handler called');
+	});
+
+	t.deepEqual(steps, [
+		'promise created',
+		'catch called',
+		'catch-handler called'
+	]);
+});
+
+test('should have static method `resolve` the returns a lazy resolved promise', async t => {
+	const lazyPromise = PLazy.resolve(fixture);
+
+	t.true(lazyPromise instanceof PLazy);
+	t.true(lazyPromise instanceof Promise);
+
+	t.is(await lazyPromise, fixture);
+});

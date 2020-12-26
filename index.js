@@ -15,6 +15,18 @@ class PLazy extends Promise {
 		});
 	}
 
+	static resolve(val) {
+		return new PLazy(resolve => {
+			resolve(val);
+		});
+	}
+
+	static reject(err) {
+		return new PLazy((resolve, reject) => {
+			reject(err);
+		});
+	}
+
 	then(onFulfilled, onRejected) {
 		this._promise = this._promise || new Promise(this._executor);
 		// eslint-disable-next-line promise/prefer-await-to-then
