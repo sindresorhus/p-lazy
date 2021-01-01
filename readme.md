@@ -1,4 +1,4 @@
-# p-lazy [![Build Status](https://travis-ci.org/sindresorhus/p-lazy.svg?branch=master)](https://travis-ci.org/sindresorhus/p-lazy)
+# p-lazy
 
 > Create a lazy promise that defers execution until it's awaited or when `.then()` or `.catch()` is called
 
