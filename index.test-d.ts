@@ -13,3 +13,5 @@ expectType<PLazy<string>>(lazyPromise);
 
 expectType<PLazy<number>>(PLazy.from(() => Promise.resolve(1)));
 expectType<PLazy<number>>(PLazy.from(() => 1));
+expectType<PLazy<number>>(PLazy.resolve(1));
+expectType<PLazy<never>>(PLazy.reject(new Error()));
