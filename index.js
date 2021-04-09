@@ -1,6 +1,6 @@
-'use strict';
+// TODO: Use private class fields when ESLint support it.
 
-class PLazy extends Promise {
+export default class PLazy extends Promise {
 	constructor(executor) {
 		super(resolve => {
 			resolve();
@@ -9,9 +9,9 @@ class PLazy extends Promise {
 		this._executor = executor;
 	}
 
-	static from(fn) {
+	static from(function_) {
 		return new PLazy(resolve => {
-			resolve(fn());
+			resolve(function_());
 		});
 	}
 
@@ -38,5 +38,3 @@ class PLazy extends Promise {
 		return this._promise.catch(onRejected);
 	}
 }
-
-module.exports = PLazy;

@@ -1,6 +1,6 @@
 import test from 'ava';
 import delay from 'delay';
-import PLazy from '.';
+import PLazy from './index.js';
 
 const fixture = Symbol('fixture');
 

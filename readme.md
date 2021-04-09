@@ -4,18 +4,16 @@
 
 Useful if you're doing some heavy operations and would like to only do it when the promise is actually used.
 
-
 ## Install
 
 ```
 $ npm install p-lazy
 ```
 
-
 ## Usage
 
 ```js
-const PLazy = require('p-lazy');
+import PLazy from 'p-lazy';
 
 const lazyPromise = new PLazy(resolve => {
 	someHeavyOperation(resolve);
@@ -23,13 +21,11 @@ const lazyPromise = new PLazy(resolve => {
 
 // `someHeavyOperation` is not yet called
 
-(async () => {
-	await doSomethingFun;
-	// `someHeavyOperation` is called
-	console.log(await lazyPromise);
-})();
-```
+await doSomethingFun;
 
+// `someHeavyOperation` is called
+console.log(await lazyPromise);
+```
 
 ## API
 
@@ -49,7 +45,6 @@ Create a `PLazy` promise that is resolved with the given `value`, or the promise
 
 Create a `PLazy` promise that is rejected with the given `reason`.
 
-
 ## Related
 
 - [p-cancelable](https://github.com/sindresorhus/p-cancelable) - Create a promise that can be canceled
@@ -57,8 +52,3 @@ Create a `PLazy` promise that is rejected with the given `reason`.
 - [lazy-value](https://github.com/sindresorhus/lazy-value) - Create a lazily evaluated value
 - [define-lazy-prop](https://github.com/sindresorhus/define-lazy-prop) - Define a lazily evaluated property on an object
 - [More…](https://github.com/sindresorhus/promise-fun)
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

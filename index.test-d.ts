@@ -1,17 +1,16 @@
 import {expectType} from 'tsd';
-import PLazy = require('.');
+import PLazy from './index.js';
 
 const lazyPromise = new PLazy<string>((resolve, reject) => {
-	if (!true) {
-		resolve('foo');
+	if (true) {
+		reject(new Error('fixture'));
 	} else {
-		reject(new Error());
+		resolve('foo');
 	}
 });
 
 expectType<PLazy<string>>(lazyPromise);
-
-expectType<PLazy<number>>(PLazy.from(() => Promise.resolve(1)));
+expectType<PLazy<number>>(PLazy.from(async () => Promise.resolve(1)));
 expectType<PLazy<number>>(PLazy.from(() => 1));
 expectType<PLazy<number>>(PLazy.resolve(1));
-expectType<PLazy<never>>(PLazy.reject(new Error()));
+expectType<PLazy<never>>(PLazy.reject(new Error('fixture')));
