@@ -1,12 +1,15 @@
 // TODO: Use private class fields when ESLint support it.
 
 export default class PLazy extends Promise {
+	#executor;
+	#promise;
+
 	constructor(executor) {
 		super(resolve => {
 			resolve();
 		});
 
-		this._executor = executor;
+		this.#executor = executor;
 	}
 
 	static from(function_) {
@@ -28,13 +31,13 @@ export default class PLazy extends Promise {
 	}
 
 	then(onFulfilled, onRejected) {
-		this._promise = this._promise || new Promise(this._executor);
-		// eslint-disable-next-line promise/prefer-await-to-then
-		return this._promise.then(onFulfilled, onRejected);
+		// TODO: Use `??=` when targeting Node.js 16.
+		this.#promise = this.#promise || new Promise(this.#executor);
+		return this.#promise.then(onFulfilled, onRejected);
 	}
 
 	catch(onRejected) {
-		this._promise = this._promise || new Promise(this._executor);
-		return this._promise.catch(onRejected);
+		this.#promise = this.#promise || new Promise(this.#executor);
+		return this.#promise.catch(onRejected);
 	}
 }

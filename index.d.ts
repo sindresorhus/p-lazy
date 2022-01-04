@@ -1,7 +1,7 @@
 /**
 Create a lazy promise that defers execution until it's awaited or when `.then()` or `.catch()` is called.
 */
-export default class PLazy<ValueType> extends Promise<ValueType> {
+export default class PLazy<ValueType> extends Promise<ValueType> { // eslint-disable-line @typescript-eslint/naming-convention
 	/**
 	Create a `PLazy` promise from a promise-returning or async function.
 

@@ -27,7 +27,7 @@ test('executor resolves', async t => {
 		'promise created',
 		'then called',
 		'executor called',
-		'then-handler called'
+		'then-handler called',
 	]);
 });
 
@@ -55,7 +55,7 @@ test('executor rejects', async t => {
 		'promise created',
 		'catch called',
 		'executor called',
-		'catch-handler called'
+		'catch-handler called',
 	]);
 });
 
@@ -89,7 +89,7 @@ test('executor is called with only catch handler', async t => {
 	t.deepEqual(steps, [
 		'promise created',
 		'catch called',
-		'executor called'
+		'executor called',
 	]);
 });
 
@@ -129,7 +129,7 @@ test('should have static method `reject` that returns a lazy rejected promise', 
 	t.deepEqual(steps, [
 		'promise created',
 		'catch called',
-		'catch-handler called'
+		'catch-handler called',
 	]);
 });
 

@@ -2,7 +2,7 @@ import {expectType} from 'tsd';
 import PLazy from './index.js';
 
 const lazyPromise = new PLazy<string>((resolve, reject) => {
-	if (true) {
+	if (true) { // eslint-disable-line no-constant-condition
 		reject(new Error('fixture'));
 	} else {
 		resolve('foo');

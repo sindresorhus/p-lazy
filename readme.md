@@ -6,8 +6,8 @@ Useful if you're doing some heavy operations and would like to only do it when t
 
 ## Install
 
-```
-$ npm install p-lazy
+```sh
+npm install p-lazy
 ```
 
 ## Usage
