@@ -10,7 +10,7 @@ const lazyPromise = new PLazy<string>((resolve, reject) => {
 });
 
 expectType<PLazy<string>>(lazyPromise);
-expectType<PLazy<number>>(PLazy.from(async () => Promise.resolve(1)));
+expectType<PLazy<number>>(PLazy.from(async () => 1));
 expectType<PLazy<number>>(PLazy.from(() => 1));
 expectType<PLazy<number>>(PLazy.resolve(1));
 expectType<PLazy<never>>(PLazy.reject(new Error('fixture')));

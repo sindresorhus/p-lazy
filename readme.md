@@ -1,6 +1,6 @@
 # p-lazy
 
-> Create a lazy promise that defers execution until it's awaited or when `.then()` or `.catch()` is called
+> Create a lazy promise that defers execution until it's awaited or when `.then()`, or `.catch()`, or `.finally()` is called
 
 Useful if you're doing some heavy operations and would like to only do it when the promise is actually used.
 

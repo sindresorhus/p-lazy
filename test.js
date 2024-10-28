@@ -1,5 +1,5 @@
+import {setTimeout as delay} from 'node:timers/promises';
 import test from 'ava';
-import delay from 'delay';
 import PLazy from './index.js';
 
 const fixture = Symbol('fixture');

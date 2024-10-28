@@ -1,5 +1,3 @@
-// TODO: Use private class fields when ESLint support it.
-
 export default class PLazy extends Promise {
 	#executor;
 	#promise;
@@ -31,18 +29,17 @@ export default class PLazy extends Promise {
 	}
 
 	then(onFulfilled, onRejected) {
-		// TODO: Use `??=` when targeting Node.js 16.
-		this.#promise = this.#promise || new Promise(this.#executor);
+		this.#promise ??= new Promise(this.#executor);
 		return this.#promise.then(onFulfilled, onRejected);
 	}
 
 	catch(onRejected) {
-		this.#promise = this.#promise || new Promise(this.#executor);
+		this.#promise ??= new Promise(this.#executor);
 		return this.#promise.catch(onRejected);
 	}
 
 	finally(onFinally) {
-		this.#promise = this.#promise || new Promise(this.#executor);
+		this.#promise ??= new Promise(this.#executor);
 		return this.#promise.finally(onFinally);
 	}
 }

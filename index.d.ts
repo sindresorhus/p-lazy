@@ -1,5 +1,5 @@
 /**
-Create a lazy promise that defers execution until it's awaited or when `.then()` or `.catch()` is called.
+Create a lazy promise that defers execution until it's awaited or when `.then()`, `.catch()`, or `.finally()` is called.
 */
 export default class PLazy<ValueType> extends Promise<ValueType> { // eslint-disable-line @typescript-eslint/naming-convention
 	/**
