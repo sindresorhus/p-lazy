@@ -40,4 +40,9 @@ export default class PLazy extends Promise {
 		this.#promise = this.#promise || new Promise(this.#executor);
 		return this.#promise.catch(onRejected);
 	}
+
+	finally(onFinally) {
+		this.#promise = this.#promise || new Promise(this.#executor);
+		return this.#promise.finally(onFinally);
+	}
 }
